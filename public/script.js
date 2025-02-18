@@ -21,9 +21,10 @@ const selectedAgency = document.getElementById('selectedAgency');
 const selectedAgencyMobile = document.getElementById('selectedAgencyMobile');
 const fileInput= document.getElementById('fileInput')
 const fileIcon= document.getElementById('fileIcon')
+const form = document.querySelector("form");
 
-
-
+let selectedCategory= 'sexual_harassment';
+let selectedAgencyValue= '';
 
 fileInput.addEventListener('input', () => {
     if(fileInput.isDefaultNamespace.length > 0){
@@ -67,7 +68,6 @@ document.querySelectorAll('.faq__btn').forEach(faq => {
     const content = faq.querySelector('div');
     const icon = button.querySelector('svg');
 
-    console.log(icon)
     button.addEventListener('click', (e) => {
         e.stopPropagation();
         // Toggle visibility of the answer
@@ -136,6 +136,7 @@ const dropdownToggle1 = () => {
 document.querySelectorAll('.dropdown-item').forEach(item => {
     item.addEventListener('click', (event) => {
         event.stopPropagation(); // Stop event propagation
+        selectedAgencyValue= item.getAttribute('value')
         selectedAgency.textContent = item.textContent;
         selectedAgencyMobile.textContent = item.textContent.split(' ').slice(-1).join();
         dropdownMenuMobile.classList.add('hidden');
@@ -154,11 +155,12 @@ document.addEventListener('click', (event) => {
     }
 });
 
-// Report button Active Focus
+// Report category Active Focus
 reportBtn.forEach((btn) => {
     btn.addEventListener('click', (event) => {
         event.stopPropagation()
         event.preventDefault()
+        selectedCategory= btn.getAttribute('value') || 'Sexual';
         reportBtn.forEach((otherBtn) => {
             otherBtn.classList.remove('bg-mainGreen', 'text-white')
         })
@@ -186,8 +188,11 @@ textArea.addEventListener('input', () => {
 })
 
 // mobile Anonymous Icon
+let isAnonymous = false;
+
  mobileAnonymousIcon.addEventListener('click', (e) => {
     e.stopPropagation()
+    isAnonymous= !isAnonymous
     if(mobileAnonymousIcon.getAttribute('src') == './assets/icons/hide.png'){
         mobileAnonymousIcon.setAttribute('src', './assets/icons/show.png')
         // mobileAnonymousIcon.classList.toggle('h-4')
@@ -200,6 +205,7 @@ textArea.addEventListener('input', () => {
 // desktop anonymous icon and text
 desktopAnonymousIcon.addEventListener('click', (e) => {
     e.stopPropagation()
+    isAnonymous= !isAnonymous
     if(desktopAnonymousIcon.firstElementChild.nextElementSibling.getAttribute('src') == './assets/icons/show.png'){
         desktopAnonymousIcon.classList.add('lg:bg-bgBlue')
         desktopAnonymousIcon.firstElementChild.nextElementSibling.setAttribute('src', './assets/icons/hide.png')
@@ -208,6 +214,69 @@ desktopAnonymousIcon.addEventListener('click', (e) => {
         desktopAnonymousIcon.classList.remove('lg:bg-bgBlue')
     }
 })
+
+// Form submission
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    let description = textArea.value;
+
+    console.log({
+        category: selectedCategory,
+        description: description,  
+        agency: selectedAgencyValue,
+        anonymous: isAnonymous
+    });
+
+    if (!description || !selectedCategory || !selectedAgencyValue) {
+        alert('Please fill out all required fields.');
+        return;
+    }
+
+    const formData = new FormData();
+    formData.append("category", selectedCategory);
+    formData.append("agency", selectedAgencyValue);
+    formData.append("description", description); 
+    formData.append("anonymous", isAnonymous ? "true" : "false"); 
+
+    if (fileInput.files.length > 0) {
+        formData.append("attachments", fileInput.files[0]); 
+    }
+
+    // Log formData for debugging
+    for (let pair of formData.entries()) {
+        console.log(pair[0] + ": " + pair[1]);
+    }
+
+    // Send the form data to the server
+    async function sendFormData() {
+        try {
+            const response = await fetch('http://127.0.0.1:8000/api/create_report/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest" // Helps Django recognize AJAX requests
+                },
+            });
+
+            const result = await response.json();
+            console.log(result);
+
+            if (response.ok) {
+                alert("Report submitted successfully!");
+                textArea.value = "";
+                fileInput.value = "";
+            } else {
+                alert(`Error: ${JSON.stringify(result)}`);
+            }
+        } catch (error) {
+            console.error("Error submitting report:", error);
+            alert("Failed to send report. Please try again later.");
+        }
+    }
+
+    sendFormData();
+});
 
 
 let slideIndex = 0;

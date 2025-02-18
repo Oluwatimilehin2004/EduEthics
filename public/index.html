@@ -143,7 +143,7 @@
 
         <button id="control"
         class="w-14 h-14 right-[3%] z-30 bottom-3 bg-mainGreen lg:h-20 cursor-pointer lg:w-20 rounded-full shadow-xl absolute lg:right-[2%] lg:bottom-[3%] flex justify-center items-center">
-          <img class="w-7 h-7 lg:w-9 lg:h-9" src="./assets/icons/cancel_icon.png" alt="plus/cancel button">
+          <img class="w-7 h-7 lg:w-9 lg:h-9" src="./assets/icons/plus_icon.png" alt="plus/cancel button">
         </button>
       </div>
     </section>
@@ -151,94 +151,98 @@
 
     <!-- Section 2 Make A Report -->
     <section id="reportcases" class="relative my-10 w-full lg:py-5 lg:scroll-px-9">
-      <!-- The Blurs -->
+      <form action="">
+        <!-- The Blurs -->
 
           <!-- Top Right Blur -->
           <img class="hidden lg:inline-block absolute blur-3xl lg:right-0 lg:top-0 lg:w-48 lg:h-48 " src="./assets/blurs/reportBlurRightTop.png" alt="topRightBlur">
           <!-- left Middle Blur -->
           <img class="absolute w-20 h-20 hidden lg:inline-block lg:bottom-[20%] left-0 lg:blur-2xl lg:w-48 lg:h-48 " src="./assets/blurs/reportBlurLeft.png" alt="middleLeftBlur">
 
-      <h1 class="font-normal text-[30px] pb-[20px] lg:text-center lg:font-semibold lg:text-3xl">Make a Report</h1>
-      <p class="text-[12px] font-light text-gray-500 lg:font-normal lg:text-[15px] lg:text-center"> We believe everyone deserves a safe and respectful environment, if you’ve experienced or witnessed harassment, we’re here to suport you!</p>
-      <div class="scrollable__area w-full h-14 space-x-2 pt-2 mt-7 overflow-x-auto whitespace-nowrap lg:flex lg:justify-center lg:items-center">
-        <a id="scroll_btn" class="report__btn text-white bg-mainGreen border" href="#">Sexual</a>
-        <a class="report__btn" href="#">Cyber</a>
-        <a class="report__btn" href="#">Physical</a>
-        <a class="report__btn" href="#">Verbal</a>
-        <a class="report__btn" href="#">Stalking</a>
-        <a class="report__btn" href="#">Racial</a>
-        <a class="report__btn" href="#">Religous</a>
-        <a class="report__btn" href="#">Others</a>
-      </div>
-      <div class="w-full lg:flex lg:flex-col lg:items-center">
-        <textarea id="textarea" type="text" placeholder="Write your Report" 
-        class="p-[20px] text-[13px] text-gray-500 placeholder:text-[11px] placeholder:text-gray-400 w-[100%] h-[80vh] rounded-md border decoration-none outline-none border-gray-400 lg:w-[72%] lg:mt-7 lg:border-b-0 lg:h-[40vh] lg:rounded-b-none"></textarea>
-        <div class="hidden lg:h-12 lg:py-3 lg:bg-lime-100 lg:border-b-sm lg:rounded-md lg:rounded-t-none lg:w-[72%] lg:border lg:border-l-gray-400 lg:border-r-gray-400 lg:border-b-gray-400 border-t-none lg:flex space-x-5">
-          <img class="ml-5 w-4 h-4" src="./assets/icons/AltIcons.png" alt="location icon">
-          <p class="text-[12px] text-addLocationGreen">Add Your Location</p>
-        </div>
-      </div>
-      <!-- file part -->
-      <div class="w-full h-7 flex flex-wrap items-center justify-between lg:w-[72%] lg:mx-auto lg:h-[73px] lg:mt-3">
-        <div class="flex flex-nowrap">
-          <p class="text-[11px] text-gray-400 lg:text-[13px]"><span id="characters">0</span> Characters | </p>
-          <p class="text-[11px] text-gray-400 lg:text-[13px] pl-[6px]"><span id="words">0</span> Words</p>
-        </div>
-        <!-- file button -->
-        <div class="flex items-center flex-nowrap">
-          <label for="fileInput" class="flex items-center justify-center w-6 h-6 p-1 bg-linkBlue rounded-sm cursor-pointer hover:bg-lightBlue lg:w-8 lg:h-8">
-            <!-- Icon -->
-            <img id="fileIcon" src="./assets/icons/paperClip.png" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3 h-3 text-linkIconBlue">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 9.5L12 4m0 0L7.5 9.5M12 4v16m5-4.5H7" />
-          </label>
-          <input type="file" id="fileInput" class="hidden" />
-          <!-- incognito Button Mobile Mode -->
-          <div class="lg:hidden w-6 h-6 ml-2 rounded-sm bg-gray-300 flex justify-center items-center">
-            <p class="hidden lg:inline-block lg:text-[11px] text-gray-400 py-2 pl-2">Anonymous Report</p>
-            <img id="mobAnoIcon" class="h-4 w-4" src="./assets/icons/show.png" alt="unanonymous">
+          <h1 class="font-normal text-[30px] pb-[20px] lg:text-center lg:font-semibold lg:text-3xl">Make a Report</h1>
+          <p class="text-[12px] font-light text-gray-500 lg:font-normal lg:text-[15px] lg:text-center"> We believe everyone deserves a safe and respectful environment, if you’ve experienced or witnessed harassment, we’re here to suport you!</p>
+          <div class="scrollable__area w-full h-14 space-x-2 pt-2 mt-7 overflow-x-auto whitespace-nowrap lg:flex lg:justify-center lg:items-center">
+            <button id="scroll_btn" class="report__btn text-white bg-mainGreen border" value="sexual_harassment">Sexual</button>
+            <button class="report__btn" value="cyber_harassment">Cyber</button>
+            <button class="report__btn" value="physical_harassment">Physical</button>
+            <button class="report__btn" value="verbal_harassment">Verbal</button>
+            <button class="report__btn" value="stalking">Stalking</button>
+            <button class="report__btn" value="racial_harassment">Racial</button>
+            <button class="report__btn" value="religious_harassment">Religous</button>
+            <button class="report__btn" value="others">Others</button>
           </div>
-        </div>
+          <div class="w-full lg:flex lg:flex-col lg:items-center">
+            <textarea id="textarea" type="text" placeholder="Write your Report" 
+            class="p-[20px] text-[13px] text-gray-500 placeholder:text-[11px] placeholder:text-gray-400 w-[100%] h-[80vh] rounded-md border decoration-none outline-none border-gray-400 lg:w-[72%] lg:mt-7 lg:border-b-0 lg:h-[40vh] lg:rounded-b-none"></textarea>
+            <div class="hidden lg:h-12 lg:py-3 lg:bg-lime-100 lg:border-b-sm lg:rounded-md lg:rounded-t-none lg:w-[72%] lg:border lg:border-l-gray-400 lg:border-r-gray-400 lg:border-b-gray-400 border-t-none lg:flex space-x-5">
+              <img class="ml-5 w-4 h-4" src="./assets/icons/AltIcons.png" alt="location icon">
+              <p class="text-[12px] text-addLocationGreen">Add Your Location</p>
+            </div>
+          </div>
+          <!-- file part -->
+          <div class="w-full h-7 flex flex-wrap items-center justify-between lg:w-[72%] lg:mx-auto lg:h-[73px] lg:mt-3">
+            <div class="flex flex-nowrap">
+              <p class="text-[11px] text-gray-400 lg:text-[13px]"><span id="characters">0</span> Characters | </p>
+              <p class="text-[11px] text-gray-400 lg:text-[13px] pl-[6px]"><span id="words">0</span> Words</p>
+            </div>
+            <!-- file button -->
+            <div class="flex items-center flex-nowrap">
+              <label for="fileInput" class="flex items-center justify-center w-6 h-6 p-1 bg-linkBlue rounded-sm cursor-pointer hover:bg-lightBlue lg:w-8 lg:h-8">
+                <!-- Icon -->
+                <img id="fileIcon" src="./assets/icons/paperClip.png" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-3 h-3 text-linkIconBlue">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 9.5L12 4m0 0L7.5 9.5M12 4v16m5-4.5H7" />
+              </label>
+              <input type="file" id="fileInput" class="hidden" />
+              <!-- incognito Button Mobile Mode -->
+              <div class="lg:hidden w-6 h-6 ml-2 rounded-sm bg-gray-300 flex justify-center items-center">
+                <p class="hidden lg:inline-block lg:text-[11px] text-gray-400 py-2 pl-2">Anonymous Report</p>
+                <img id="mobAnoIcon" class="h-4 w-4" src="./assets/icons/show.png" alt="unanonymous">
+              </div>
+            </div>
 
-        <!-- Select Agency Desktop Screen -->
-        <div class="hidden lg:block relative w-[65%]">
-          <div id="dropdownToggle" onclick="dropdownToggle1()" class="border border-gray-400 text-[11px] text-gray-400 py-1.5 rounded-sm px-2 flex justify-between items-center bg-white cursor-pointer">
-              <p id="selectedAgency">Select Agency</p>
-              <img class="w-4 h-4" src="./assets/icons/realDropDown.png" alt="dropdown">
-          </div>
-          
-          <ul id="dropdownMenu" class="dropdown-menu hidden absolute mt-1 rounded-sm shadow-lg z-20"> 
-              <li class="dropdown-item px-2 text-[14px] text-bgBlue py-1 cursor-pointer">Economic and Financial Crimes Commission (EFCC)</li>
-              <li class="dropdown-item px-2 text-[14px] text-bgBlue py-1 cursor-pointer">Independent Corrupt Practices Commission (ICPC)</li>
-              <li class="dropdown-item px-2 text-[14px] text-bgBlue py-1 cursor-pointer">National Human Rights Commission (NHRC)</li>
-              <li class="dropdown-item px-2 text-[14px] text-bgBlue py-1 cursor-pointer">Nigeria Police Force (NPF)</li>
-              <li class="dropdown-item px-2 text-[14px] text-bgBlue py-1 cursor-pointer">State Security Service (SSS/DSS)</li>
-          </ul>
+            <!-- Select Agency Desktop Screen -->
+            <div class="hidden lg:block relative w-[65%]">
+              <div id="dropdownToggle" onclick="dropdownToggle1()" class="border border-gray-400 text-[11px] text-gray-400 py-1.5 rounded-sm px-2 flex justify-between items-center bg-white cursor-pointer">
+                  <p id="selectedAgency">Select Agency</p>
+                  <img class="w-4 h-4" src="./assets/icons/realDropDown.png" alt="dropdown">
+              </div>
+              
+              <ul id="dropdownMenu" class="dropdown-menu hidden absolute mt-1 rounded-sm shadow-lg z-20"> 
+                  <li class="dropdown-item px-2 text-[14px] text-bgBlue py-1 cursor-pointer" value="efcc">Economic and Financial Crimes Commission (EFCC)</li>
+                  <li class="dropdown-item px-2 text-[14px] text-bgBlue py-1 cursor-pointer" value="icpc">Independent Corrupt Practices Commission (ICPC)</li>
+                  <li class="dropdown-item px-2 text-[14px] text-bgBlue py-1 cursor-pointer" value="nhrc">National Human Rights Commission (NHRC)</li>
+                  <li class="dropdown-item px-2 text-[14px] text-bgBlue py-1 cursor-pointer" value="npf">Nigeria Police Force (NPF)</li>
+                  <li class="dropdown-item px-2 text-[14px] text-bgBlue py-1 cursor-pointer" value="sss">State Security Service (SSS/DSS)</li>
+              </ul>
 
-        </div>
-        <!-- incognito button Desktop Mode -->
-        <div id="desAnoBtn" class="hidden rounded-sm bg-gray-300 w-40 h-8 lg:flex justify-between items-center pr-2">
-          <p class="hidden lg:inline-block lg:text-[11px] text-gray-400 py-2 pl-2">Anonymous</p>
-          <img class="h-5 w-5" src="./assets/icons/show.png" alt="unanonymous">
-        </div> 
-        <!-- Select Agencies & Send Button Mobile Screen-->
-        <div class="w-full h-8 flex mt-3 justify-between">
-          <div id="dropdownToggleMobile" onclick="dropdownToggle1()" class=" flex border border-gray-400 text-[11px] text-gray-400 py-1.5 w-[47%] rounded-sm px-2 justify-between lg:hidden">
-            <p id="selectedAgencyMobile" class="">Select Agency</p>
-            <img class="w-4 h-4" src="./assets/icons/realDropDown.png" alt="dropdown">
+            </div>
+            <!-- incognito button Desktop Mode -->
+            <div id="desAnoBtn" class="hidden rounded-sm bg-gray-300 w-40 h-8 lg:flex justify-between items-center pr-2">
+              <p class="hidden lg:inline-block lg:text-[11px] text-gray-400 py-2 pl-2">Anonymous</p>
+              <img class="h-5 w-5" src="./assets/icons/show.png" alt="unanonymous">
+            </div> 
+            <!-- Select Agencies & Send Button Mobile Screen-->
+            <div class="w-full h-8 flex mt-3 justify-between">
+              <div id="dropdownToggleMobile" onclick="dropdownToggle1()" class=" flex border border-gray-400 text-[11px] text-gray-400 py-1.5 w-[47%] rounded-sm px-2 justify-between lg:hidden">
+                <p id="selectedAgencyMobile" class="">Select Agency</p>
+                <img class="w-4 h-4" src="./assets/icons/realDropDown.png" alt="dropdown">
 
-            <ul id="dropdownMenuMobile" class="dropdown-menu hidden absolute mt-1 rounded-sm shadow-lg z-20">
-              <li class="dropdown-item px-2 text-[12px] text-bgBlue py-1 cursor-pointer">Economic and Financial Crimes Commission (EFCC)</li>
-              <li class="dropdown-item px-2 text-[12px] text-bgBlue py-1 cursor-pointer">Independent Corrupt Practices Commission (ICPC)</li>
-              <li class="dropdown-item px-2 text-[12px] text-bgBlue py-1 cursor-pointer">National Human Rights Commission (NHRC)</li>
-              <li class="dropdown-item px-2 text-[12px] text-bgBlue py-1 cursor-pointer">Nigeria Police Force (NPF)</li>
-              <li class="dropdown-item px-2 text-[12px] text-bgBlue py-1 cursor-pointer">State Security Service (SSS/DSS)</li>
-            </ul>
-          </div>        
-          <div class="w-[47%] cursor-pointer bg-btnBlue hover:bg-lightBlue rounded-sm flex justify-center shadow-lg lg:w-full">
-            <button id="submit" class="text-white text-[11px] h-[100%] ">Send</button>
+                <ul id="dropdownMenuMobile" class="dropdown-menu hidden absolute mt-1 rounded-sm shadow-lg z-20">
+                  <li class="dropdown-item px-2 text-[12px] text-bgBlue py-1 cursor-pointer" value="efcc">Economic and Financial Crimes Commission (EFCC)</li>
+                  <li class="dropdown-item px-2 text-[12px] text-bgBlue py-1 cursor-pointer" value="icpc">Independent Corrupt Practices Commission (ICPC)</li>
+                  <li class="dropdown-item px-2 text-[12px] text-bgBlue py-1 cursor-pointer" value="nhrc">National Human Rights Commission (NHRC)</li>
+                  <li class="dropdown-item px-2 text-[12px] text-bgBlue py-1 cursor-pointer" value="npf">Nigeria Police Force (NPF)</li>
+                  <li class="dropdown-item px-2 text-[12px] text-bgBlue py-1 cursor-pointer" value="sss">State Security Service (SSS/DSS)</li>
+                </ul>
+              </div>        
+              
+              <button
+              class="w-[47%] cursor-pointer bg-btnBlue hover:bg-lightBlue rounded-sm flex items-center justify-center shadow-lg lg:w-full text-white text-[11px] h-[100%]"
+              id="submit" type="submit" >Send</button>
+              
+              </div>
           </div>
-          </div>
-      </div>
+      </form>  
     </section>
 
     <!-- How to make a report -->
