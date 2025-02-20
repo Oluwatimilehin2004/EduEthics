@@ -266,6 +266,9 @@ form.addEventListener("submit", (event) => {
                 alert("Report submitted successfully!");
                 textArea.value = "";
                 fileInput.value = "";
+                fileIcon.src= './assets/icons/paperClip.png';
+                selectedAgency.textContent = '';
+                selectedAgencyMobile.textContent = '';
             } else {
                 alert(`Error: ${JSON.stringify(result)}`);
             }

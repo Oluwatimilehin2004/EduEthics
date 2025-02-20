@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Document</title>
+</head>
+<body class="p-5 bg-[#f8f8f8]">
+    <aside class="flex justify-between p-1 items-center font-thin text-[9px] lg:text-[11px]">
+        <p>EduEthics Official</p>
+        <p>Verified Organization</p>
+    </aside>
+    <main class="border border-[#dadada] bg-white">
+        <header class="p-6 lg:flex lg:justify-between text-center border-b border-[#dadada]">
+            <h2 class="text-[17px] lg:text-[20px] ">State Security Station (SSS)</h2>
+            <h2 class="text-[17px] lg:text-[20px] text-[#4567B7] italic mt-2 font-semibold">EduEthics</h2>
+        </header>
+        <section class="bg-[url(/download.jpg)] lg:bg-[url(/bgDesktop.jpg)] space-y-3 text-white h-[30vh] lg:h-[60vh] bg-center bg-cover lg:bg-contain flex flex-col justify-center items-center">
+            <h2>EduEthics: A Sexual Harassment Report</h2>
+            <p class="text-red-950" id="report-time"></p>
+            <a href="download.jpg" download="custom_image.jpg">
+                <button class="p-2 bg-[#8BC34A] text-[12px] font-thin text-white rounded-sm cursor-pointer">Download Evidence File</button>
+            </a>
+        </section>
+        <!-- Message -->
+        <section class="border-t border-b border-[#dadada] text-center text-[11px] lg:text-[17px] p-5 font-thin bg-white">
+            <p class="font-thi q42q1 py-4 lg:text-[20px]">This is sent through EduEthics, a government-approved organization, and it is meant to be treated with utmost priority.</p>
+            <p><strong>CATEGORY:</strong> Sexual Harassment</p>
+            <p><strong>AGENCY:</strong> State Security Station</p>
+            <p><strong>ANONYMOUS:</strong> YES</p>
+            <p><strong>REPORTER EMAIL:</strong> ANONYMOUS</p>
+            <p class="pt-5 pb-3"><strong>VICTIM'S REPORT</strong></p>
+            <div class="flex justify-center items-center">
+                <p class="max-w-[80%] text-center italic text-[#4567B7]">"On [Date], at approximately [Time], I was working in [Location] when [Alleged Harasser’s Name] approached me. They made inappropriate comments about my appearance, stating, '[Exact words if possible].' I felt extremely uncomfortable and tried to walk away, but they continued making unwelcome remarks. On another occasion, they attempted to touch my arm without consent while making another inappropriate comment. This behavior has created a hostile work environment for me."</p>
+            </div>
+        </section>
+        <!-- EduEthics Site URL -->
+        <section class="text-center text-[11px] lg:text-[17px] p-5 font-thin bg-[#f8f8f8]">
+            <p>For more information and updates on EduEthics, please visit our official website at <a class="text-[#8bc34a]" href="https://eduethics-nine.vercel.app/">eduethics.org</a></p>
+        </section>
+        <!-- Footer -->
+        <footer class="border-t border-[#dadada] p-5 text-[11px] lg:text-[17px] font-thin">
+            <div class="flex justify-between items-center p-2">
+                <div>
+                    <p>&copy; <span id="current-year"></span> EduEthics. All rights reserved.</p>
+                </div>
+                <div class="flex justify-center items-center">
+                    <a href="https://x.com/ayomidemustwin?s=21"><img class="w-[30px]" src="facebook.png" alt="Facebook"></a>
+                    <a href="https://www.facebook.com/share/14cZv6N1uc/?mibextid=wwXIfr"><img class="w-[30px]" src="twitter (2).png" alt="Twitter"></a>
+                    <a href="https://www.instagram.com/_ayomidelovestech_?igsh=MW12Y3Jpenk0ZG55NA%3D%3D&utm_source=qr"><img class="w-[30px]" src="insta.png" alt="Instagram"></a>
+                </div>
+            </div>
+            <div class="flex justify-between items-center">
+                <p class="py-2 text-center text-[#8bc34a] lg:text-black lg:text-start lg:max-w-[40%]">EduEthics aims to create a confidential, user-friendly platform that enables victims and witnesses of sexual harassment to report incidents securely. It provides options for anonymous reporting or identity disclosure, ensuring individuals feel protected and supported throughout the process.</p>
+
+                <p class="hidden lg:block max-w-[40%]">This project seeks to establish a structured system where reports are automatically directed to the appropriate authorities or organizations. This ensures swift action, proper documentation, and a transparent follow-up process to hold perpetrators accountable and prevent future occurrences.</p>
+            </div>
+        </footer>
+        <!-- Logo -->
+        <div class="bg-[#f8f8f8] border-t border-b border-[#dadada]">
+            <h1 class="font-bold text-[17px] lg:text-[20px] text-[#4567B7] text-center p-3 italic">EduEthics</h1>
+        </div>
+    </main>
+
+    <script>
+        // Set current year dynamically
+        document.getElementById("current-year").textContent = new Date().getFullYear();
+
+        // Set current time dynamically
+        function updateTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            hours = hours % 12 || 12; // Convert 24-hour format to 12-hour format
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+
+            const formattedTime = `${hours}:${minutes} ${ampm}`;
+            document.getElementById("report-time").textContent = formattedTime;
+        }
+
+        updateTime();
+        setInterval(updateTime, 60000); // Update time every minute
+    </script>
+</body>
+</html>
+
+
