@@ -24,6 +24,69 @@ const fileIcon= document.getElementById('fileIcon')
 const form = document.querySelector("form");
 const contactForm = document.getElementById('contactForm')
 
+// contact us form
+contactForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = contactForm.name.value;
+    const email = contactForm.email.value;
+    const subject = contactForm.subject.value;
+    const message = contactForm.message.value;
+
+    if (!name || !email || !subject || !message) {
+        alert("Please fill out all required fields.");
+        return;
+    }
+
+    // Formatting the message
+    const formattedMessage = `
+📩 **New Contact Form Submission**
+
+🔹 **Name:** ${name}  
+🔹 **Email:** ${email}  
+🔹 **Subject:** ${subject}  
+🔹 **Message:**  
+
+${message}
+
+🔹 **Submitted On:** ${new Date().toLocaleString()}
+    `;
+
+    const formData = new FormData();
+    formData.append("name", name);
+    formData.append("email", email);
+    formData.append("subject", subject);
+    formData.append("message", formattedMessage);
+
+    // Send the formatted message to the server
+    async function sendFormData() {
+        try {
+            const response = await fetch("http://127.0.0.1:8000/api/contact_us/", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    "X-Requested-With": "XMLHttpRequest", // Helps Django recognize AJAX requests
+                },
+            });
+
+            const result = await response.json();
+            console.log(result);
+
+            if (response.ok) {
+                alert("Message sent successfully!");
+                contactForm.reset();
+            } else {
+                alert(`Error: ${JSON.stringify(result)}`);
+            }
+        } catch (error) {
+            console.error("Error sending message:", error);
+            alert("Failed to send message. Please try again later.");
+        }
+    }
+
+    sendFormData();
+});
+
 let selectedCategory= 'sexual_harassment';
 let selectedAgencyValue= '';
 
@@ -419,52 +482,5 @@ nextBtnMobile.addEventListener('click', (e) => {
  scrollTestimonies();
 
 
-// contact us form
-contactForm.addEventListener('submit', (e)=> {
-    e.preventDefault();
 
-    const name = contactForm.name.value;
-    const email = contactForm.email.value;
-    const subject = contactForm.subject.value;
-    const message = contactForm.message.value;
-
-    if(!name ||!email ||!subject ||!message){
-        alert('Please fill out all required fields.');
-        return;
-    }
-
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('subject', subject);
-    formData.append('message', message);
-
-    // Send the form data to the server
-    async function sendFormData() {
-        try {
-            const response = await fetch('http://127.0.0.1:8000/api/contact_us/', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest' // Helps Django recognize AJAX requests
-                },
-            });
-
-            const result = await response.json();
-            console.log(result);
-
-            if (response.ok) {
-                alert('Message sent successfully!');
-                contactForm.reset();
-            } else {
-                alert(`Error: ${JSON.stringify(result)}`);
-            }
-        } catch (error) {
-            console.error('Error sending message:', error);
-            alert('Failed to send message. Please try again later.');
-        }
-    }
-
-    sendFormData();
-})
 
