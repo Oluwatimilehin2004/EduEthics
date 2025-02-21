@@ -61,7 +61,7 @@ ${message}
     // Send the formatted message to the server
     async function sendFormData() {
         try {
-            const response = await fetch("http://127.0.0.1:8000/api/contact_us/", {
+            const response = await fetch("http://127.0.0.1:8000/api/contact_me/", {
                 method: "POST",
                 body: formData,
                 headers: {
