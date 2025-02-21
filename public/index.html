@@ -587,12 +587,13 @@
       </div>
 
       <!-- contact form -->
-      <form class="flex flex-col gap-[10px]" action="">
+      <form id="contactForm" class="flex flex-col gap-[10px]" action="">
         <!-- Email -->
         <input
         type="text"
         id="email"
         placeholder="Email"
+        name="email"
         class="w-full px-4 py-2 placeholder:text-[12px] my-2 placeholder:font-light lg:placeholder:text-[12px] rounded-md focus:outline-none focus:ring-2 focus:ring-mainGreen focus:border-transparent transition-colors"
         />
 
@@ -609,6 +610,7 @@
           <input
           type="text"
           id="subject"
+          name="subject"
           placeholder="Subject"
           class="w-full lg:w-1/2 px-4 py-2 placeholder:text-[12px] my-2 placeholder:font-light lg:placeholder:text-[12px] rounded-md focus:outline-none focus:ring-2 focus:ring-mainGreen focus:border-transparent transition-colors"
           />
@@ -616,6 +618,7 @@
 
         <textarea
               id="message"
+              name="message"
               placeholder="Enter you Message"
               rows="4"
               class="w-full px-4 py-2 placeholder:text-[12px] placeholder:font-light lg:placeholder:text-[12px] rounded-md focus:outline-none focus:ring-2 focus:ring-mainGreen focus:border-transparent transition-colors"
