@@ -279,7 +279,7 @@ desktopAnonymousIcon.addEventListener('click', (e) => {
     }
 })
 
-// Form submission
+//Report Form submission
 form.addEventListener("submit", (event) => {
     event.preventDefault();
 
