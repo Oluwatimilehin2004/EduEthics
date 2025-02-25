@@ -41,9 +41,9 @@ const showNotification= (message) => {
         dismissNotification()
     },3000)
 
-    setTimeout(() => {
-        progressBar.style.width = "0%";
-    },50)
+    // setTimeout(() => {
+    //     progressBar.style.width = "0%";
+    // },50)
 }
 
 const dismissNotification= () => {
