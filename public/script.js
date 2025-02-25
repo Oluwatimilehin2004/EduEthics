@@ -135,21 +135,17 @@ document.addEventListener('DOMContentLoaded', function () {
     profileBtn.addEventListener('click', function (event) {
         event.stopPropagation();
         dropdownMenu.classList.toggle('hidden');
-        setTimeout(() => {
-            dropdownMenu.classList.toggle('opacity-0');
-            dropdownMenu.classList.toggle('scale-90');
-            dropdownMenu.classList.toggle('translate-y-5');
-            dropdownMenu.classList.toggle('rotate-6');
-            dropdownMenu.classList.toggle('skew-y-3');
-        }, 2000);
+        dropdownMenu.classList.toggle('opacity-0');
+        dropdownMenu.classList.toggle('scale-90');
+        dropdownMenu.classList.toggle('translate-y-5');
+        dropdownMenu.classList.toggle('rotate-6');
+        dropdownMenu.classList.toggle('skew-y-3');
     });
 
     document.addEventListener('click', function (event) {
         if (!dropdownMenu.contains(event.target) && !profileBtn.contains(event.target)) {
             dropdownMenu.classList.add('opacity-0', 'scale-90', 'translate-y-5', 'rotate-6', 'skew-y-3');
-            setTimeout(() => {
-                dropdownMenu.classList.add('hidden');
-            }, 500);
+            dropdownMenu.classList.add('hidden');
         }
     });
 });
