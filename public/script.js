@@ -27,6 +27,7 @@ const contactForm = document.getElementById('contactForm')
 const showNotification= (message) => {
     const notification= document.getElementById('notification')
     const messageSpan= document.getElementById('notification-message')
+    const progressBar= document.getElementById('progress-bar')
 
     messageSpan.textContent= message
 
@@ -36,6 +37,11 @@ const showNotification= (message) => {
     setTimeout(() => { 
         dismissNotification()
     },3000)
+
+    setTimeout(() => {
+        progressBar.classList.remove('w-full')
+        progressBar.classList.add('w-0')
+    },50)
 }
 
 const dismissNotification= () => {
