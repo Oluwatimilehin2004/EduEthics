@@ -31,8 +31,8 @@ const showNotification= (message) => {
 
     messageSpan.textContent= message
 
-    progressBar.style.width = "100%";
-    progressBar.style.transition = "width 3s linear";
+    // progressBar.style.width = "100%";
+    // progressBar.style.transition = "width 3s linear";
 
     notification.classList.remove('hidden')
     notification.classList.add('opacity-100')
