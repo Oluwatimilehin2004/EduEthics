@@ -34,7 +34,7 @@ contactForm.addEventListener("submit", (e) => {
     const message = contactForm.message.value;
 
     if (!name || !email || !subject || !message) {
-        alert("Please fill out all required fields.");
+        showNotification("Please fill out all required fields.");
         return;
     }
 
@@ -73,14 +73,14 @@ ${message}
             console.log(result);
 
             if (response.ok) {
-                alert("Message sent successfully!");
+                showNotification("Message sent successfully!");
                 contactForm.reset();
             } else {
-                alert(`Error: ${JSON.stringify(result)}`);
+                showNotification(`Error: ${JSON.stringify(result)}`);
             }
         } catch (error) {
             console.error("Error sending message:", error);
-            alert("Failed to send message. Please try again later.");
+            showNotification("Failed to send message. Please try again later.");
         }
     }
 
@@ -293,7 +293,7 @@ form.addEventListener("submit", (event) => {
     });
 
     if (!description || !selectedCategory || !selectedAgencyValue) {
-        alert('Please fill out all required fields.');
+        showNotification('Please fill out all required fields.');
         return;
     }
 
@@ -327,18 +327,18 @@ form.addEventListener("submit", (event) => {
             console.log(result);
 
             if (response.ok) {
-                alert("Report submitted successfully!");
+                showNotification('Report submitted successfully!')
                 textArea.value = "";
                 fileInput.value = "";
                 fileIcon.src= './assets/icons/paperClip.png';
                 selectedAgency.textContent = '';
                 selectedAgencyMobile.textContent = '';
             } else {
-                alert(`Error: ${JSON.stringify(result)}`);
+                showNotification(`Error: ${JSON.stringify(result)}`);
             }
         } catch (error) {
             console.error("Error submitting report:", error);
-            alert("Failed to send report. Please try again later.");
+            showNotification("Failed to send report. Please try again later.");
         }
     }
 
@@ -482,5 +482,23 @@ nextBtnMobile.addEventListener('click', (e) => {
  scrollTestimonies();
 
 
+const showNotification= (message) => {
+    const notification= document.getElementById('notification')
+    const messageSpan= document.getElementById('notification-message')
 
+    messageSpan.textContent= message
+
+    notification.classList.remove('hidden')
+    notification.classList.add('opacity-100')
+
+    setTimeout(() => { 
+        dismissNotification()
+    },3000)
+}
+
+const dismissNotification= () => {
+    const notification= document.getElementById('notification')
+
+    notification.classList.add('hidden')
+}
 
