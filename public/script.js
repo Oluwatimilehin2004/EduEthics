@@ -24,6 +24,26 @@ const fileIcon= document.getElementById('fileIcon')
 const form = document.querySelector("form");
 const contactForm = document.getElementById('contactForm')
 
+const showNotification= (message) => {
+    const notification= document.getElementById('notification')
+    const messageSpan= document.getElementById('notification-message')
+
+    messageSpan.textContent= message
+
+    notification.classList.remove('hidden')
+    notification.classList.add('opacity-100')
+
+    setTimeout(() => { 
+        dismissNotification()
+    },3000)
+}
+
+const dismissNotification= () => {
+    const notification= document.getElementById('notification')
+
+    notification.classList.add('hidden')
+}
+
 // contact us form
 contactForm.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -482,23 +502,5 @@ nextBtnMobile.addEventListener('click', (e) => {
  scrollTestimonies();
 
 
-const showNotification= (message) => {
-    const notification= document.getElementById('notification')
-    const messageSpan= document.getElementById('notification-message')
 
-    messageSpan.textContent= message
-
-    notification.classList.remove('hidden')
-    notification.classList.add('opacity-100')
-
-    setTimeout(() => { 
-        dismissNotification()
-    },3000)
-}
-
-const dismissNotification= () => {
-    const notification= document.getElementById('notification')
-
-    notification.classList.add('hidden')
-}
 
