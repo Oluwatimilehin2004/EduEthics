@@ -7,10 +7,6 @@ const signInLayer= document.getElementById('signInLayer')
 const leftBlock= document.getElementById('left__block')
 const BASEURL= 'http://localhost:8000/api'
 
-document.addEventListener('load', ()=> {
-    window.location.href = "login.html";
-})
-
 const showNotification= (message) => {
     const notification= document.getElementById('notification')
     const messageSpan= document.getElementById('notification-message')
@@ -66,7 +62,7 @@ const attachFormEventListener = () => {
                 localStorage.setItem("refreshToken", data.refresh_token);
 
                 showNotification("Sign-in successful!");
-                window.location.href = "/public/index.html";    
+                window.location.href = "/public/home.html";    
             } else {
                 showNotification(`Sign-in failed: ${data.error}`);
             }
