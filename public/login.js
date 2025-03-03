@@ -8,7 +8,7 @@ const leftBlock= document.getElementById('left__block')
 const BASEURL= 'http://localhost:8000/api'
 
 document.addEventListener('load', ()=> {
-    window.location.href = "loginout.html";
+    window.location.href = "login.html";
 })
 
 const showNotification= (message) => {
@@ -66,7 +66,7 @@ const attachFormEventListener = () => {
                 localStorage.setItem("refreshToken", data.refresh_token);
 
                 showNotification("Sign-in successful!");
-                window.location.href = "/public/home.html";    
+                window.location.href = "/public/index.html";    
             } else {
                 showNotification(`Sign-in failed: ${data.error}`);
             }
