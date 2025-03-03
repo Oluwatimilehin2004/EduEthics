@@ -66,7 +66,7 @@ const attachFormEventListener = () => {
                 localStorage.setItem("refreshToken", data.refresh_token);
 
                 showNotification("Sign-in successful!");
-                window.location.href = "/public/main.html";    
+                window.location.href = "/public/main.html/";    
             } else {
                 showNotification(`Sign-in failed: ${data.error}`);
             }
