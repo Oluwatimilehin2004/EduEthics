@@ -23,6 +23,13 @@ module.exports = {
     extend: {
       colors: {
         'backgroundColor': '#f8f8f8',
+        'noSexPurple': '#4d4b8c',
+        'noAbusePurple': '#7471b4',
+        'stopGenderViolence': '#452b36',
+        'stopGenderViolenceMan': '#200613',
+        'stopGenderViolenceWoman': '#704e69',
+        'stopGenderViolenceSkin': '#cea6ae',
+        'stopGenderViolenceButtom': '#100108',
         'bgBlue': '#4567B7',
         'btnBlue': '#4567B7',
         'linkIconBlue': '#4567B7',

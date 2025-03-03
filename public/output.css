@@ -731,6 +731,10 @@ video {
   top: 0.25rem;
 }
 
+.top-5 {
+  top: 1.25rem;
+}
+
 .top-56 {
   top: 14rem;
 }
@@ -759,6 +763,10 @@ video {
   z-index: -50;
 }
 
+.z-10 {
+  z-index: 10;
+}
+
 .z-20 {
   z-index: 20;
 }
@@ -779,6 +787,16 @@ video {
   margin: auto;
 }
 
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .my-10 {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
@@ -787,6 +805,16 @@ video {
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.my-6 {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .mb-20 {
@@ -803,6 +831,10 @@ video {
 
 .ml-2 {
   margin-left: 0.5rem;
+}
+
+.ml-4 {
+  margin-left: 1rem;
 }
 
 .ml-5 {
@@ -823,6 +855,10 @@ video {
 
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mt-2\.5 {
+  margin-top: 0.625rem;
 }
 
 .mt-20 {
@@ -861,12 +897,12 @@ video {
   display: none;
 }
 
-.h-10 {
-  height: 2.5rem;
+.h-1 {
+  height: 0.25rem;
 }
 
-.h-12 {
-  height: 3rem;
+.h-10 {
+  height: 2.5rem;
 }
 
 .h-14 {
@@ -917,12 +953,32 @@ video {
   height: 100%;
 }
 
+.h-\[100vh\] {
+  height: 100vh;
+}
+
+.h-\[12\%\] {
+  height: 12%;
+}
+
+.h-\[50\%\] {
+  height: 50%;
+}
+
 .h-\[60vh\] {
   height: 60vh;
 }
 
+.h-\[70\%\] {
+  height: 70%;
+}
+
 .h-\[80vh\] {
   height: 80vh;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .w-10 {
@@ -985,8 +1041,20 @@ video {
   width: 100%;
 }
 
+.w-\[30\%\] {
+  width: 30%;
+}
+
+.w-\[45\%\] {
+  width: 45%;
+}
+
 .w-\[47\%\] {
   width: 47%;
+}
+
+.w-\[50\%\] {
+  width: 50%;
 }
 
 .w-\[65\%\] {
@@ -1003,6 +1071,14 @@ video {
 
 .w-\[8\] {
   width: 8;
+}
+
+.w-\[90\%\] {
+  width: 90%;
+}
+
+.w-\[95\%\] {
+  width: 95%;
 }
 
 .w-full {
@@ -1037,6 +1113,10 @@ video {
 
 .transform {
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.cursor-none {
+  cursor: none;
 }
 
 .cursor-pointer {
@@ -1148,6 +1228,10 @@ video {
   border-radius: 0.25rem;
 }
 
+.rounded-3xl {
+  border-radius: 1.5rem;
+}
+
 .rounded-\[15px\] {
   border-radius: 15px;
 }
@@ -1168,12 +1252,36 @@ video {
   border-radius: 0.125rem;
 }
 
+.rounded-bl-3xl {
+  border-bottom-left-radius: 1.5rem;
+}
+
+.rounded-br-3xl {
+  border-bottom-right-radius: 1.5rem;
+}
+
+.rounded-br-lg {
+  border-bottom-right-radius: 0.5rem;
+}
+
+.rounded-tl-3xl {
+  border-top-left-radius: 1.5rem;
+}
+
+.rounded-tl-lg {
+  border-top-left-radius: 0.5rem;
+}
+
 .border {
   border-width: 1px;
 }
 
 .border-2 {
   border-width: 2px;
+}
+
+.border-b {
+  border-bottom-width: 1px;
 }
 
 .border-b-2 {
@@ -1188,6 +1296,10 @@ video {
   border-style: dashed;
 }
 
+.border-none {
+  border-style: none;
+}
+
 .border-bgBlue {
   --tw-border-opacity: 1;
   border-color: rgb(69 103 183 / var(--tw-border-opacity, 1));
@@ -1198,9 +1310,29 @@ video {
   border-color: rgb(156 163 175 / var(--tw-border-opacity, 1));
 }
 
+.border-slate-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(203 213 225 / var(--tw-border-opacity, 1));
+}
+
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity, 1));
+}
+
+.border-b-noAbusePurple {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(116 113 180 / var(--tw-border-opacity, 1));
+}
+
+.border-b-noSexPurple {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(77 75 140 / var(--tw-border-opacity, 1));
+}
+
+.border-b-stopGenderViolenceMan {
+  --tw-border-opacity: 1;
+  border-bottom-color: rgb(32 6 19 / var(--tw-border-opacity, 1));
 }
 
 .bg-backgroundColor {
@@ -1258,9 +1390,53 @@ video {
   background-color: rgb(139 195 74 / var(--tw-bg-opacity, 1));
 }
 
+.bg-noAbusePurple {
+  --tw-bg-opacity: 1;
+  background-color: rgb(116 113 180 / var(--tw-bg-opacity, 1));
+}
+
+.bg-noSexPurple {
+  --tw-bg-opacity: 1;
+  background-color: rgb(77 75 140 / var(--tw-bg-opacity, 1));
+}
+
+.bg-stopGenderViolence {
+  --tw-bg-opacity: 1;
+  background-color: rgb(69 43 54 / var(--tw-bg-opacity, 1));
+}
+
+.bg-stopGenderViolenceButtom {
+  --tw-bg-opacity: 1;
+  background-color: rgb(16 1 8 / var(--tw-bg-opacity, 1));
+}
+
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity, 1));
+}
+
+.bg-stopGenderViolenceSkin {
+  --tw-bg-opacity: 1;
+  background-color: rgb(206 166 174 / var(--tw-bg-opacity, 1));
+}
+
+.bg-stopGenderViolenceWoman {
+  --tw-bg-opacity: 1;
+  background-color: rgb(112 78 105 / var(--tw-bg-opacity, 1));
+}
+
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.from-lightBlue {
+  --tw-gradient-from: #5a8acc var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(90 138 204 / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-bgBlue {
+  --tw-gradient-to: #4567B7 var(--tw-gradient-to-position);
 }
 
 .p-1 {
@@ -1405,22 +1581,6 @@ video {
   padding-top: 1.25rem;
 }
 
-.pt-\[10rem\] {
-  padding-top: 10rem;
-}
-
-.pt-\[7rem\] {
-  padding-top: 7rem;
-}
-
-.pt-\[6rem\] {
-  padding-top: 6rem;
-}
-
-.pt-\[2rem\] {
-  padding-top: 2rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -1473,20 +1633,17 @@ video {
   font-size: 30px;
 }
 
-.text-\[40px\] {
-  font-size: 40px;
-}
-
-.text-\[35px\] {
-  font-size: 35px;
-}
-
-.text-\[34px\] {
-  font-size: 34px;
-}
-
 .text-\[32px\] {
   font-size: 32px;
+}
+
+.text-\[9px\] {
+  font-size: 9px;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 
 .font-bold {
@@ -1511,6 +1668,10 @@ video {
 
 .font-thin {
   font-weight: 100;
+}
+
+.italic {
+  font-style: italic;
 }
 
 .text-addLocationGreen {
@@ -1548,13 +1709,37 @@ video {
   color: rgb(69 103 183 / var(--tw-text-opacity, 1));
 }
 
+.text-noSexPurple {
+  --tw-text-opacity: 1;
+  color: rgb(77 75 140 / var(--tw-text-opacity, 1));
+}
+
+.text-red-600 {
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
+}
+
+.text-slate-300 {
+  --tw-text-opacity: 1;
+  color: rgb(203 213 225 / var(--tw-text-opacity, 1));
+}
+
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
 }
 
+.text-stopGenderViolenceWoman {
+  --tw-text-opacity: 1;
+  color: rgb(112 78 105 / var(--tw-text-opacity, 1));
+}
+
 .opacity-0 {
   opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
 }
 
 .opacity-20 {
@@ -1623,6 +1808,12 @@ video {
   transition-duration: 150ms;
 }
 
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
 .transition-colors {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -1635,6 +1826,10 @@ video {
   transition-duration: 150ms;
 }
 
+.duration-300 {
+  transition-duration: 300ms;
+}
+
 .ease-in-out {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -1645,6 +1840,14 @@ video {
 
 .scrollable__area{
   scrollbar-width: none;
+}
+
+.placeholder\:text-\[10px\]::-moz-placeholder {
+  font-size: 10px;
+}
+
+.placeholder\:text-\[10px\]::placeholder {
+  font-size: 10px;
 }
 
 .placeholder\:text-\[11px\]::-moz-placeholder {
@@ -1727,9 +1930,19 @@ video {
   background-color: rgb(139 195 74 / var(--tw-bg-opacity, 1));
 }
 
+.hover\:bg-noSexPurple:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(77 75 140 / var(--tw-bg-opacity, 1));
+}
+
 .hover\:bg-red-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(220 38 38 / var(--tw-bg-opacity, 1));
+}
+
+.hover\:bg-stopGenderViolenceSkin:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(206 166 174 / var(--tw-bg-opacity, 1));
 }
 
 .hover\:opacity-55:hover {
@@ -1756,9 +1969,9 @@ video {
   --tw-ring-color: rgb(139 195 74 / var(--tw-ring-opacity, 1));
 }
 
-@media (min-width: 360px) {
-  .min-\[360px\]\:pt-\[10rem\] {
-    padding-top: 10rem;
+@media (min-width: 768px) {
+  .md\:hidden {
+    display: none;
   }
 }
 
@@ -1944,8 +2157,16 @@ video {
     height: 55vh;
   }
 
+  .lg\:h-\[70\%\] {
+    height: 70%;
+  }
+
   .lg\:h-\[73px\] {
     height: 73px;
+  }
+
+  .lg\:h-\[80\%\] {
+    height: 80%;
   }
 
   .lg\:h-\[80vh\] {
@@ -2081,6 +2302,18 @@ video {
   .lg\:rounded-t-none {
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
+  }
+
+  .lg\:rounded-br-3xl {
+    border-bottom-right-radius: 1.5rem;
+  }
+
+  .lg\:rounded-tl-3xl {
+    border-top-left-radius: 1.5rem;
+  }
+
+  .lg\:rounded-tr-3xl {
+    border-top-right-radius: 1.5rem;
   }
 
   .lg\:border {

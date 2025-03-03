@@ -75,7 +75,7 @@
             const ampm = hours >= 12 ? 'PM' : 'AM';
 
             hours = hours % 12 || 12; // Convert 24-hour format to 12-hour format
-            minutes = minutes < 10 ? '0' + minutes : minutes;
+            minutes = minutes <script 10 ? '0' + minutes : minutes;
 
             const formattedTime = `${hours}:${minutes} ${ampm}`;
             document.getElementById("report-time").textContent = formattedTime;
