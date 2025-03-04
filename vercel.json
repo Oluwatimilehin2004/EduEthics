@@ -5,7 +5,7 @@
         "dest": "/login.html"
       },
       {
-        "src": "/public/index.html",
+        "src": "/index.html",
         "dest": "/index.html"
       }
     ]
