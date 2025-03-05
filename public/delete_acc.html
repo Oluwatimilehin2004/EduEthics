@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Account</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Main Container -->
+    <div class="min-h-screen flex items-center justify-center">
+        <!-- Delete Account Card -->
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Delete Account</h2>
+            <p class="text-gray-700 mb-6">
+                Are you sure you want to delete your account? This action cannot be undone. All your data will be permanently removed.
+            </p>
+            <button onclick="openModal()" class="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
+                Delete Account
+            </button>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Confirm Account Deletion</h3>
+            <p class="text-gray-700 mb-6">
+                This action will permanently delete your account and all associated data. Are you sure you want to proceed?
+            </p>
+            <div class="flex justify-end space-x-4">
+                <button onclick="closeModal()" class="bg-gray-300 text-gray-700 py-2 px-4 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    Cancel
+                </button>
+                <button onclick="deleteAccount()" class="bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    Delete Account
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Open confirmation modal
+        function openModal() {
+            document.getElementById("confirmation-modal").classList.remove("hidden");
+        }
+
+        // Close confirmation modal
+        function closeModal() {
+            document.getElementById("confirmation-modal").classList.add("hidden");
+        }
+
+        // Delete account (example function)
+        async function deleteAccount() {
+            const BASEURL= 'http://127.0.0.1:8000/api';
+            const token = localStorage.getItem('accessToken');
+
+            try {
+                const response = await fetch(`${BASEURL}/delete_acc/`, {
+                    method: "DELETE",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to delete account");
+                }
+
+                const data = await response.json();
+                alert(data.message || "Account deleted successfully!");
+
+                closeModal();
+                localStorage.removeItem('accessToken');
+                localStorage.removeItem('refreshToken');
+                window.location.href = "./login.html"; 
+                alert("Account deletion successful!");
+            } catch (error) {
+                console.error("Error deleting account:", error);
+                alert("Failed to delete account. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>

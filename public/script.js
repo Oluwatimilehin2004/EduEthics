@@ -53,6 +53,49 @@ const dismissNotification= () => {
     notification.classList.add('hidden')
 }
 
+// Logout functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const BASEURL= 'http://localhost:8000/api'
+    const logout= document.getElementById('logout')
+
+    logout.addEventListener('click', async (e) => {
+        e.stopPropagation()
+        const refreshToken = localStorage.getItem('refreshToken');
+    
+        if (!refreshToken) {
+            showNotification('No refresh token found. Please log in again.')
+            return;
+        }
+    
+        try {
+            const response = await fetch(`${BASEURL}/signout/`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`, 
+                },
+                body: JSON.stringify({ refresh_token: refreshToken }),
+            });
+    
+            const data = await response.json();
+    
+            if (response.ok) {
+                showNotification(data.success)
+    
+                // Clear tokens from local storage
+                localStorage.removeItem('accessToken');
+                localStorage.removeItem('refreshToken');
+    
+                // Redirect to login page or home page
+                window.location.href = '/public/login.html';
+            } else {
+                showNotification(data.error || 'An error occurred during sign-out.')
+            }
+        } catch (error) {
+            showNotification('An error occurred. Please try again.')
+        }
+    });
+})
 
 document.addEventListener("DOMContentLoaded", () => {
     const contactForm = document.getElementById("contact__form");
@@ -396,6 +439,38 @@ function initializeSlider() {
     }
 }
 
+const BASEURL= 'http://127.0.0.1:8000';
+// Function to fetch and display profile details
+document.addEventListener('DOMContentLoaded', () => {
+   async function fetchProfile() {
+       const token = localStorage.getItem('accessToken'); 
+  
+       try {
+           const response = await fetch(`${BASEURL}/api/profile/`, {
+               headers: {
+                   'Authorization': `Bearer ${token}`,
+               },
+           });
+  
+           if (!response.ok) {
+               throw new Error('Failed to fetch profile details');
+           }
+  
+           const data = await response.json();
+  
+           // Update the HTML content with the fetched data
+           document.getElementById('profile_pic').src = `${BASEURL}/${data.profile.profile_pic}` || './assets/default.png';
+           document.getElementById('username').textContent = data.user.username || data.user.first_name || data.user.last_name || "Lovely User";
+       } catch (error) {
+           console.error('Error fetching profile details:', error);
+           alert('Failed to load profile details. Please try again.');
+       }
+   }
+  
+  
+  fetchProfile()
+})
+
 // Show the slide at the given index
 function showSlides(index) {
     // Ensure the index is within bounds
@@ -514,7 +589,6 @@ nextBtnMobile.addEventListener('click', (e) => {
 
  // Start the scroll animation
  scrollTestimonies();
-
 
 
 

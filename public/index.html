@@ -79,23 +79,23 @@
         <a class="nav__link" href="#faqs">FAQS</a>
       </div>
       <div class="relative">
-        <div id="profile-btn" class=" lg:w-[120px] lg:h-[40px] z-40 cursor-pointer lg:bg-deepBlue lg:rounded-full lg:flex lg:items-center lg:justify-around">
-          <img class="w-8 h-8 rounded-full" src="./assets/profile1.jpeg" alt="profile1">
-          <p class="hidden lg:inline-block text-[12px] text-white">Ojudun</p>
-          <img class="hidden lg:inline-block w-2.5 h-2.5 mr-2" src="./assets/icons/drop-down-arrow.png" alt="icon">
+        <div id="profile-btn" class="py-1 px-2 z-40 cursor-pointer lg:bg-deepBlue lg:rounded-full lg:flex lg:items-center lg:justify-around">
+          <img id="profile_pic" class="w-8 h-8 rounded-full mr-2" src="" alt="profile1">
+          <p id="username" class="hidden lg:inline-block text-[12px] text-white"></p>
+          <img class="hidden lg:inline-block w-2.5 h-2.5 ml-2" src="./assets/icons/drop-down-arrow.png" alt="icon">
         </div>
         
         <div id="dropdown-menu" class="hidden absolute font-[Inter] right-0 mt-2 z-50 w-32 lg:w-48 bg-mainGreen text-white rounded-lg shadow-lg overflow-hidden transform transition-transform ease-in-out">
-          <a href="#" class="flex items-center text-[12px] lg:[14px] px-4 py-2 hover:bg-bgBlue">
+          <a href="./profile.html" class="flex items-center text-[12px] lg:[14px] px-4 py-2 hover:bg-bgBlue">
               <span class="mr-2">👤</span> Profile
           </a>
-          <a href="#" class="flex items-center text-[12px] lg:[14px] px-4 py-2 hover:bg-bgBlue">
+          <a href="./dashboard.html" class="flex items-center text-[12px] lg:[14px] px-4 py-2 hover:bg-bgBlue">
               <span class="mr-2">🔒</span> Dashboard
           </a>
-          <a href="#" class="flex items-center text-[12px] lg:[14px] px-4 py-2 hover:bg-bgBlue">
+          <a href="./delete_acc.html" class="flex items-center text-[12px] lg:[14px] px-4 py-2 hover:bg-bgBlue">
               <span class="mr-2">⚙️</span> Settings
           </a>
-          <button id="logout" class="flex items-center text-[12px] lg:[14px] px-4 py-2 hover:bg-red-600">
+          <button id="logout" class="w-full flex items-center text-[12px] lg:[14px] px-4 py-2 hover:bg-red-600">
               <span class="mr-2">🚪</span> Log out
           </button>
         </div>   

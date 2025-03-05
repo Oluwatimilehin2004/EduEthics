@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+<body class="bg-gray-100">
+    <div class="border-black flex justify-between">
+        <a href="./edit_profile.html">
+            <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-lg w-full border">
+                Edit Profile
+            </button>
+        </a>
+        <a href="./index.html">
+            <button class="bg-gray-500 hover:bg-gray-700 text-black font-bold py-2 px-4 rounded-lg w-full border">
+                Back To Home
+            </button>
+        </a>
+    </div>
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h1 class="text-2xl font-bold mb-6 text-center">Profile Details</h1>
+            <div id="profile-content" class="space-y-4">
+                <!-- Profile details will be dynamically added here -->
+                <div class="text-center">
+                    <img id="profile-pic" src="" alt="Profile Picture" class="w-24 h-24 rounded-full mx-auto mb-4">
+                </div>
+                <p><span class="font-bold">Username:</span> <span id="username"></span></p>
+                <p><span class="font-bold">Email:</span> <span id="email"></span></p>
+                <p><span class="font-bold">Bio:</span> <span id="bio"></span></p>
+                <p><span class="font-bold">Gender:</span> <span id="gender"></span></p>
+            </div>          
+        </div>
+    </div>
+    
+
+    <script>
+        const BASEURL= 'http://127.0.0.1:8000';
+        // Function to fetch and display profile details
+        async function fetchProfileDetails() {
+            const token = localStorage.getItem('accessToken'); 
+
+            try {
+                const response = await fetch(`${BASEURL}/api/profile/`, {
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch profile details');
+                }
+
+                const data = await response.json();
+
+                // Update the HTML content with the fetched data
+                document.getElementById('profile-pic').src = `${BASEURL}/${data.profile.profile_pic}` || 'https://via.placeholder.com/150';
+                document.getElementById('username').textContent = data.user.username || 'User';
+                document.getElementById('email').textContent = data.user.email;
+                document.getElementById('bio').textContent = data.profile.bio || 'Not provided';
+                document.getElementById('gender').textContent = data.profile.gender || 'Not provided';
+            } catch (error) {
+                console.error('Error fetching profile details:', error);
+                alert('Failed to load profile details. Please try again.');
+            }
+        }
+
+        // Call the function to fetch and display profile details when the page loads
+        fetchProfileDetails();
+    </script>
+</body>
+</html>

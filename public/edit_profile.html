@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex items-center justify-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+            <h1 class="text-2xl font-bold mb-6 text-center">Edit Profile</h1>
+            <form id="edit-profile-form" class="space-y-4" enctype="multipart/form-data">
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="bio">Bio</label>
+                    <textarea id="bio" name="bio" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"></textarea>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="gender">Gender</label>
+                    <select id="gender" name="gender" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                        <option value="Prefer not to say">Prefer not to say</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="profile_pic">Profile Picture</label>
+                    <input type="file" id="profile_pic" name="profile_pic" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                </div>
+                <div class="flex items-center justify-between">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Save Changes</button>
+                </div>             
+            </form>
+            <a href="./index.html">
+                <button class="bg-gray-500 hover:bg-gray-700 text-black font-bold py-2 px-4 rounded-lg w-full border">
+                    Back To Home
+                </button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const token = localStorage.getItem('accessToken'); 
+        // Fetch profile data to pre-fill the form
+        fetch('http://127.0.0.1:8000/api/profile/', {
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('email').value = data.user.email || '';
+            document.getElementById('bio').value = data.profile.bio || '';
+            document.getElementById('gender').value = data.profile.gender || '';
+        })
+        .catch(error => console.error('Error fetching profile:', error));
+
+        // Handle form submission
+        document.getElementById('edit-profile-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('email', document.getElementById('email').value);
+            formData.append('bio', document.getElementById('bio').value);
+            formData.append('gender', document.getElementById('gender').value);
+            formData.append('profile_pic', document.getElementById('profile_pic').files[0]);
+
+            fetch('http://127.0.0.1:8000/api/profile/', {
+                method: 'PUT',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: formData,
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    alert(data.message); // Show success message
+                } else {
+                    alert('Profile updated successfully!');
+                }
+            })
+            .catch(error => console.error('Error updating profile:', error));
+        });
+    </script>
+</body>
+</html>

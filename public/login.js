@@ -198,7 +198,7 @@ const handleSignIn = () => {
             <button class="text-white bg-stopGenderViolenceWoman rounded-sm w-full text-[12px] py-1 cursor-pointer hover:bg-stopGenderViolenceSkin">Sign In</button>
             <div class="flex justify-between items-center">
                 <p onclick="handleSignUp()" class="text-[11px] text-stopGenderViolenceWoman cursor-pointer">Sign Up</p>
-                <a href="" class="text-[11px] text-stopGenderViolenceWoman">Forgotten password?</a>
+                <a href="./forgot_password.html" class="text-[11px] text-stopGenderViolenceWoman">Forgotten password?</a>
             </div>
             <div class="w-full justify-center mt-5 py-3 space-x-10 flex">
                 <a href="https://www.instagram.com/_ayomidelovestech_?igsh=MW12Y3Jpenk0ZG55NA%3D%3D&utm_source=qr">

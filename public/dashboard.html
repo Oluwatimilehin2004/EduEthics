@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Dashboard Container -->
+    <div class="min-h-screen flex flex-col">
+        <!-- Header -->
+        <header class="bg-white shadow">
+            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="flex-1">
+            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+                <div class="px-4 py-6 sm:px-0">
+                    <!-- Search Report by Tracking ID -->
+                    <div class="mb-8">
+                        <h3 class="text-lg font-medium text-gray-900">Search Report by Tracking ID</h3>
+                        <div class="mt-4 flex">
+                            <input type="text" id="tracking-id" placeholder="Enter Tracking ID" class="flex-1 p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <button onclick="fetchReport()" class="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600">Search</button>
+                        </div>
+                    </div>
+
+                    <!-- Report Details Section -->
+                    <div id="report-details" class="bg-white shadow overflow-hidden sm:rounded-lg hidden">
+                        <div class="px-4 py-5 sm:px-6">
+                            <h3 class="text-lg font-medium leading-6 text-gray-900">Report Details</h3>
+                        </div>
+                        <div class="border-t border-gray-200">
+                            <dl>
+                                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">Tracking ID</dt>
+                                    <dd id="tracking-id-detail" class="mt-1 text-sm text-gray-900 sm:col-span-2"></dd>
+                                </div>
+                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">Description</dt>
+                                    <dd id="description" class="mt-1 text-sm text-gray-900 sm:col-span-2"></dd>
+                                </div>
+                                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">Agency</dt>
+                                    <dd id="agency" class="mt-1 text-sm text-gray-900 sm:col-span-2"></dd>
+                                </div>
+                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                    <dt class="text-sm font-medium text-gray-500">Reporter Email</dt>
+                                    <dd id="reporter-email" class="mt-1 text-sm text-gray-900 sm:col-span-2"></dd>
+                                </div>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <!-- Follow-up Message Section -->
+                    <div id="follow-up-section" class="mt-8 bg-white shadow sm:rounded-lg hidden">
+                        <div class="px-4 py-5 sm:p-6">
+                            <h3 class="text-lg font-medium leading-6 text-gray-900">Send Follow-up Message</h3>
+                            <form id="follow-up-form" class="mt-4">
+                                <div class="grid grid-cols-1 gap-6">
+                                    <div>
+                                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Write your follow-up message here..." required></textarea>
+                                    </div>
+                                </div>
+                                <div class="mt-6">
+                                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        Send Message
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const BASEURL= 'http://127.0.0.1:8000/api';
+        const token = localStorage.getItem('accessToken');
+
+        // Fetch report by tracking ID
+        async function fetchReport(trackingId) {
+            if (!trackingId) {
+                trackingId = document.getElementById("tracking-id").value;
+            }
+
+            if (!trackingId) {
+                alert("Please enter a tracking ID.");
+                return;
+            }
+
+            try {
+                const response = await fetch(`${BASEURL}/tracking_id/${trackingId}/`, {
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error("Report not found");
+                }
+
+                const data = await response.json();
+
+                // Display report details
+                document.getElementById("tracking-id-detail").textContent = data.tracking_id;
+                document.getElementById("description").textContent = data.description;
+                document.getElementById("agency").textContent = data.agency;
+                document.getElementById("reporter-email").textContent = data.reporter_email;
+
+                // Show report details and follow-up section
+                document.getElementById("report-details").classList.remove("hidden");
+                document.getElementById("follow-up-section").classList.remove("hidden");
+            } catch (error) {
+                console.error("Error fetching report:", error);
+                alert("Report not found. Please check the tracking ID.");
+            }
+        }
+
+        // Handle follow-up form submission
+        document.getElementById("follow-up-form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const trackingId = document.getElementById("tracking-id").value;
+            const message = document.getElementById("message").value;
+
+            if (!message) {
+                alert("Follow-up message is required.");
+                return;
+            }
+
+            try {
+                const response = await fetch(`${BASEURL}/send_follow_up/${trackingId}/`, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ message }),
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to send follow-up message");
+                }
+
+                const data = await response.json();
+                alert(data.message || "Follow-up message sent successfully!");
+                document.getElementById("message").value = "";
+            } catch (error) {
+                console.error("Error sending follow-up message:", error);
+                alert("Failed to send follow-up message. Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>
