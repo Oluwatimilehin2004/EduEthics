@@ -78,7 +78,7 @@
         <a class="nav__link" href="#contactus">CONTACT US</a>
         <a class="nav__link" href="#faqs">FAQS</a>
       </div>
-      <div class="relative">
+      <div id="userBtn" class="relative">
         <div id="profile-btn" class="py-1 px-2 z-40 cursor-pointer lg:bg-deepBlue lg:rounded-full lg:flex lg:items-center lg:justify-around">
           <img id="profile_pic" class="w-8 h-8 rounded-full mr-2" src="" alt="profile1">
           <p id="username" class="hidden lg:inline-block text-[12px] text-white"></p>
@@ -148,9 +148,9 @@
           <img class="w-5 h-5" src="./assets/icons/message.png" alt="message">
         </button>
 
-        <button id="bot" class="absolute w-10 h-10 right-[5.2%] bottom-[10%] cursor-pointer bg-mainGreen lg:h-14 lg:w-14 rounded-full shadow-md lg:right-11 lg:bottom-[20%] flex justify-center items-center hidden">
+        <a href="./eduethics_bot.html" id="bot" class="absolute w-10 h-10 right-[5.2%] bottom-[10%] cursor-pointer bg-mainGreen lg:h-14 lg:w-14 rounded-full shadow-md lg:right-11 lg:bottom-[20%] flex justify-center items-center hidden">
           <img class="w-5 h-5" src="./assets/icons/bot_icon.png" alt="bot">
-        </button>
+        </a>
 
         <button id="control"
         class="w-14 h-14 right-[3%] z-30 bottom-3 bg-mainGreen lg:h-20 cursor-pointer lg:w-20 rounded-full shadow-xl absolute lg:right-[2%] lg:bottom-[3%] flex justify-center items-center">
@@ -249,7 +249,7 @@
               
               <button
               class="w-[47%] cursor-pointer bg-btnBlue hover:bg-lightBlue rounded-sm flex items-center justify-center shadow-lg lg:w-full text-white text-[11px] h-[100%]"
-              id="submit" type="submit" >Send</button>
+              id="submit" type="submit" >Send Report</button>
               
               </div>
           </div>
@@ -635,7 +635,7 @@
               class="text-[12px] font-light w-full px-4 py-2 placeholder:text-[12px] placeholder:font-light lg:placeholder:text-[12px] rounded-md focus:outline-none focus:ring-2 focus:ring-mainGreen focus:border-transparent transition-colors"
         ></textarea>
 
-        <button type="submit" class="w-full text-[12px] py-3 rounded-md shadow-md text-white bg-mainGreen my-2 hover:bg-mainGreen hover:opacity-55">Send</button>
+        <button type="submit" class="w-full text-[12px] py-3 rounded-md shadow-md text-white bg-mainGreen my-2 hover:bg-mainGreen hover:opacity-55">Send Message</button>
       </form>
     </section>
   </main>

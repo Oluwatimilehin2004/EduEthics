@@ -22,7 +22,7 @@ module.exports = {
 
     extend: {
       colors: {
-        'backgroundColor': '#f8f8f8',
+        'backgroundColor': '#f9f9f9',
         'noSexPurple': '#4d4b8c',
         'noAbusePurple': '#7471b4',
         'stopGenderViolence': '#452b36',

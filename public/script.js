@@ -168,8 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-let selectedCategory= 'sexual_harassment';
-let selectedAgencyValue= '';
+let selectedCategory= 'Sexual_Harassment';
+let selectedAgencyValue= 'Select Agency';
 
 fileInput.addEventListener('input', () => {
     if(fileInput.isDefaultNamespace.length > 0){
@@ -408,8 +408,8 @@ form.addEventListener("submit", (event) => {
                 textArea.value = "";
                 fileInput.value = "";
                 fileIcon.src= './assets/icons/paperClip.png';
-                selectedAgency.textContent = '';
-                selectedAgencyMobile.textContent = '';
+                selectedAgency.textContent = 'Select Agency';
+                selectedAgencyMobile.textContent = 'Select Agency';
             } else {
                 showNotification(`Error: ${JSON.stringify(result)}`);
             }

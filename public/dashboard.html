@@ -4,71 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./output.css">
 </head>
-<body class="bg-gray-100">
+<body class="bg-backgroundColor font-[Inter]">
     <!-- Dashboard Container -->
     <div class="min-h-screen flex flex-col">
         <!-- Header -->
-        <header class="bg-white shadow">
-            <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
-            </div>
+        <header class="w-full h-20 items-center flex justify-between font-[Inter] border-b border-black px-4">
+                <a href="./index.html" class="text-[13px] lg:text-[15px] font-bold">EduEthics</a>
+                <h1 class="text-[13px] font-semibold lg:text-[14px]">Dashboard</h1>
         </header>
 
         <!-- Main Content -->
         <main class="flex-1">
-            <div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+            <div class="w-[90%] mx-auto py-6 sm:px-6 lg:px-8">
                 <div class="px-4 py-6 sm:px-0">
                     <!-- Search Report by Tracking ID -->
                     <div class="mb-8">
-                        <h3 class="text-lg font-medium text-gray-900">Search Report by Tracking ID</h3>
-                        <div class="mt-4 flex">
-                            <input type="text" id="tracking-id" placeholder="Enter Tracking ID" class="flex-1 p-2 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <button onclick="fetchReport()" class="bg-blue-500 text-white px-4 py-2 rounded-r-md hover:bg-blue-600">Search</button>
+                        <h3 class="text-[12px]">Search Report by Tracking ID</h3>
+                        <div class="mt-4 flex text-[12px] lg:text-[14px]">
+                            <input type="text" id="tracking-id" placeholder="Enter Tracking ID" class="px-2 text-gray-600 text-[11px] lg:text-[13px] w-full placeholder:text-[10px] placeholder:lg:text-[12px] flex-1 p-2 border border-black rounded-l-md focus:outline-none focus:ring-2 focus:ring-bgBlue">
+                            <button onclick="fetchReport()" class="bg-bgBlue text-white px-4 py-2 rounded-r-md hover:bg-lightBlue">Search</button>
                         </div>
                     </div>
 
                     <!-- Report Details Section -->
-                    <div id="report-details" class="bg-white shadow overflow-hidden sm:rounded-lg hidden">
-                        <div class="px-4 py-5 sm:px-6">
-                            <h3 class="text-lg font-medium leading-6 text-gray-900">Report Details</h3>
+                    <div id="report-details" class="bg-white overflow-hidden sm:rounded-lg hidden">
+                        <div class="px-4 py-5 sm:px-6 border-b border-black">
+                            <h3 class="text-[12px] lg:text-[14px] leading-6 font-bold">Report Details</h3>
                         </div>
-                        <div class="border-t border-gray-200">
+                        <div class="">
                             <dl>
-                                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">Tracking ID</dt>
-                                    <dd id="tracking-id-detail" class="mt-1 text-sm text-gray-900 sm:col-span-2"></dd>
+                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-black">
+                                    <dt class="text-[12px] lg:text-[14px] text-black font-medium italic">Tracking ID</dt>
+                                    <dd id="tracking-id-detail" class="mt-1 text-[11px] lg:text-[13px] sm:col-span-2"></dd>
                                 </div>
-                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">Description</dt>
-                                    <dd id="description" class="mt-1 text-sm text-gray-900 sm:col-span-2"></dd>
+                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-black">
+                                    <dt class="text-[12px] lg:text-[14px] text-black font-medium italic">Description</dt>
+                                    <dd id="description" class="mt-1 text-[11px] lg:text-[13px] sm:col-span-2"></dd>
                                 </div>
-                                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">Agency</dt>
-                                    <dd id="agency" class="mt-1 text-sm text-gray-900 sm:col-span-2"></dd>
+                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-black">
+                                    <dt class="text-[12px] lg:text-[14px] text-black font-medium italic">Agency</dt>
+                                    <dd id="agency" class="mt-1 text-[11px] lg:text-[13px] sm:col-span-2"></dd>
                                 </div>
-                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                                    <dt class="text-sm font-medium text-gray-500">Reporter Email</dt>
-                                    <dd id="reporter-email" class="mt-1 text-sm text-gray-900 sm:col-span-2"></dd>
+                                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-b border-black">
+                                    <dt class="text-[12px] lg:text-[14px] italic text-black font-medium">Reporter Email</dt>
+                                    <dd id="reporter-email" class="mt-1 text-[11px] lg:text-[13px] sm:col-span-2"></dd>
                                 </div>
+                                
                             </dl>
                         </div>
                     </div>
 
                     <!-- Follow-up Message Section -->
-                    <div id="follow-up-section" class="mt-8 bg-white shadow sm:rounded-lg hidden">
+                    <div id="follow-up-section" class="mt-8 bg-white sm:rounded-lg hidden">
                         <div class="px-4 py-5 sm:p-6">
-                            <h3 class="text-lg font-medium leading-6 text-gray-900">Send Follow-up Message</h3>
+                            <h3 class="text-[12px] lg:text-[14px] leading-6 font-medium">Send Follow-up Message</h3>
                             <form id="follow-up-form" class="mt-4">
                                 <div class="grid grid-cols-1 gap-6">
                                     <div>
-                                        <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
-                                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 sm:text-sm" placeholder="Write your follow-up message here..." required></textarea>
+                                        <label for="message" class="block text-[12px] lg:text-[14px]">Message</label>
+                                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full py-2 px-3 border border-black bg-white rounded-md focus:outline-none focus:ring-2 focus:ring-bgBlue focus:border-lightBlue text-[12px] lg:text-[14px] placeholder:text-[10px] placeholder:lg:text-[12px] placeholder:px-3" placeholder="Write your follow-up message here..." required></textarea>
                                     </div>
                                 </div>
                                 <div class="mt-6">
-                                    <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                    <button type="submit" class="text-[12px] lg:text-[14px] inline-flex justify-center py-2 px-4 border border-transparent shadow-sm rounded-sm text-white bg-mainGreen hover:bg-lime-200">
                                         Send Message
                                     </button>
                                 </div>

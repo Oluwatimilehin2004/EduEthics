@@ -3,37 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="./output.css">
 </head>
-<body class="bg-gray-100">
-    <div class="border-black flex justify-between">
-        <a href="./edit_profile.html">
-            <button class="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded-lg w-full border">
-                Edit Profile
-            </button>
-        </a>
-        <a href="./index.html">
-            <button class="bg-gray-500 hover:bg-gray-700 text-black font-bold py-2 px-4 rounded-lg w-full border">
-                Back To Home
-            </button>
-        </a>
-    </div>
-    <div class="min-h-screen flex items-center justify-center">
-        <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-            <h1 class="text-2xl font-bold mb-6 text-center">Profile Details</h1>
-            <div id="profile-content" class="space-y-4">
-                <!-- Profile details will be dynamically added here -->
-                <div class="text-center">
-                    <img id="profile-pic" src="" alt="Profile Picture" class="w-24 h-24 rounded-full mx-auto mb-4">
+<body>
+    <main class="w-[100%] lg:h-[100vh]">
+        <!-- Header -->
+        <navbar class="lg:h-[12%] py-5 lg:py-0 w-full items-center flex justify-between font-[Inter] px-4">
+            <a href="./index.html" class="text-[13px] lg:text-[15px] font-bold">EduEthics</a>
+            <h1 class="text-[13px] font-medium lg:text-[14px] cursor-none">Your Profile</h1>
+        </navbar>
+        <div class="h-[90%] bg-backgroundColor lg:px-[150px] lg:pb-[20px] px-3 flex flex-col">
+            <div class="w-full py-[20px]">
+                <h1 class="text-[12px] lg:text-[14px] font-medium text-start"><span class="mr-2">👤</span> Profile Details</h1>
+            </div>
+            <div class="w-full lg:h-[95%] m-auto rounded-sm lg:flex flex flex-col lg:flex-row px-5 lg:p-10 bg-white">
+                <div class="lg:w-[50%] w-full h-full rounded-sm py-5">
+                    <img id="profile-pic" src="" alt="Profile Picture" class="lg:h-full w-full">
                 </div>
-                <p><span class="font-bold">Username:</span> <span id="username"></span></p>
-                <p><span class="font-bold">Email:</span> <span id="email"></span></p>
-                <p><span class="font-bold">Bio:</span> <span id="bio"></span></p>
-                <p><span class="font-bold">Gender:</span> <span id="gender"></span></p>
-            </div>          
+                <div class="max-w-[70%] font-[Inter] space-y-5 py-4 lg:px-5">
+                    <div>
+                        <p class="font-medium text-[12px] lg:text-[15px]">FIRST NAME:</p>
+                        <p class="text-[10px] lg:text-[13px] font-semibold" id="first_name"></p>
+                    </div>
+                    <div>
+                        <p class="font-medium text-[12px] lg:text-[15px]">LAST NAME:</p>
+                        <p class="text-[10px] lg:text-[13px] font-semibold" id="last_name"></p>
+                    </div>
+                    <div>
+                        <p class="font-medium text-[12px] lg:text-[15px]">USERNAME:</p>
+                        <p class="text-[10px] lg:text-[13px] font-semibold" id="username"></p>
+                    </div>
+                    <div>
+                        <p class="font-medium text-[12px] lg:text-[14px]">EMAIL:</p>
+                        <p class="text-[10px] lg:text-[12px] font-semibold" id="email"></p>
+                    </div>
+                    <div>
+                        <p class="font-medium text-[12px] lg:text-[14px]">BIO:</p>
+                        <p class="text-[10px] lg:text-[12px] font-semibold" id="bio"></p>
+                    </div>
+                    <div>
+                        <p class="font-medium text-[12px] lg:text-[14px]">GENDER:</p>
+                        <p class="text-[10px] lg:text-[12px] font-semibold" id="gender"></p>
+                    </div>
+                    <div class="w-full">
+                        <a href="./edit_profile.html">
+                            <button class="py-2 px-5 shadow-sm mr-4 rounded-sm border-2 border-bgBlue border-dotted text-white bg-mainGreen text-[12px] lg:text-[14px] hover:bg-bgBlue">EDIT PROFILE</button>
+                        </a>
+                        <a href="./index.html">
+                            <button class="py-2 px-5 shadow-sm rounded-sm border-2 border-bgBlue border-dotted text-white bg-mainGreen text-[12px] lg:text-[14px] italic hover:bg-bgBlue">BACK TO HOME</button>
+                        </a>
+                    </div>  
+                </div>   
+                
         </div>
-    </div>
+    </div> 
+    </main>
     
 
     <script>
@@ -57,6 +82,8 @@
 
                 // Update the HTML content with the fetched data
                 document.getElementById('profile-pic').src = `${BASEURL}/${data.profile.profile_pic}` || 'https://via.placeholder.com/150';
+                document.getElementById('first_name').textContent = data.user.first_name || 'User';
+                document.getElementById('last_name').textContent = data.user.last_name || 'User';
                 document.getElementById('username').textContent = data.user.username || 'User';
                 document.getElementById('email').textContent = data.user.email;
                 document.getElementById('bio').textContent = data.profile.bio || 'Not provided';
